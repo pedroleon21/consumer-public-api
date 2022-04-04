@@ -9,7 +9,6 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import br.com.linux4.dto.CategoriesDTO;
-import br.com.linux4.dto.EntriesDTO;
 import br.com.linux4.exception.BrokenPipeException;
 import br.com.linux4.integration.ApiConsumer;
 

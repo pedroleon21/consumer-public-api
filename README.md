@@ -1,56 +1,26 @@
 # consumer-public-api Project
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
+##Um projeto Quarkus.
 
-If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
+ O pacote inicial do projeto foi gerado a partir do siter do quarkus.io que fonece um projeto base organizado e com as dependencias de nossa escolha.
 
-## Running the application in dev mode
+para executar
 
-You can run your application in dev mode that enables live coding using:
 ```shell script
 ./mvnw compile quarkus:dev
 ```
 
 > **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at http://localhost:8080/q/dev/.
 
-## Packaging and running the application
+## Empacontaodo e rodando a aplicacão
 
-The application can be packaged using:
+
 ```shell script
-./mvnw package
+mvn clean packege Dquarkus.profile=prod
 ```
-It produces the `quarkus-run.jar` file in the `target/quarkus-app/` directory.
-Be aware that it’s not an _über-jar_ as the dependencies are copied into the `target/quarkus-app/lib/` directory.
+apesar de poder ser compilada para binário esta aplicação não esta executando em binário. ela roda sobre a open-jdk-11 e esta sendo executada dentro de um docker presente neste arquivo.
 
-The application is now runnable using `java -jar target/quarkus-app/quarkus-run.jar`.
-
-If you want to build an _über-jar_, execute the following command:
-```shell script
-./mvnw package -Dquarkus.package.type=uber-jar
-```
-
-The application, packaged as an _über-jar_, is now runnable using `java -jar target/*-runner.jar`.
-
-## Creating a native executable
-
-You can create a native executable using: 
-```shell script
-./mvnw package -Pnative
-```
-
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using: 
-```shell script
-./mvnw package -Pnative -Dquarkus.native.container-build=true
-```
-
-You can then execute your native executable with: `./target/consumer-public-api-1.0.0-SNAPSHOT-runner`
-
-If you want to learn more about building native executables, please consult https://quarkus.io/guides/maven-tooling.
-
-## Provided Code
-
-### RESTEasy Reactive
-
-Easily start your Reactive RESTful Web Services
-
-[Related guide section...](https://quarkus.io/guides/getting-started-reactive#reactive-jax-rs-resources)
+## desafios:
+Tive desafio especial e acabei por não buscar um solução definifiva para mapear para um objeto e uma lista, retornando uma string da resposta e filtrando no proprio front na listagem de apis. infelizmente o tempo não contribuiu para a busca de um solução efetiva.
+apesar de retorar uma string no header e no body da requisição de login, não implementei o jwt que era o objetivo primário.
+e existe uma dependencia que acabou pro quebrar os teste unitário, mas com a remoção das dependencias do jersey cliente os testes voltam a funcionar. ja existe uma solução para a incompatibildade.

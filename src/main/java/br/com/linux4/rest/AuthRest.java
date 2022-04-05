@@ -10,7 +10,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.ResponseBuilder;
-import javax.ws.rs.core.Response.Status;
 
 import br.com.linux4.form.AuthForm;
 import br.com.linux4.service.AuthService;
@@ -32,6 +31,7 @@ public class AuthRest extends SuperRest{
 			 ResponseBuilder response = Response.ok().entity(token);
 			 response.header("Autorization", token);
 			return response
+					.entity(token)
 					.build();
 		} catch (Exception e) {
 			e.printStackTrace();
